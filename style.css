@@ -1,0 +1,27 @@
+/* * {
+    outline: 1px solid red;
+} */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.control {
+    margin: 10px;
+}
+
+.parent-div {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.square-divs {
+    width: 30px;
+    height: 30px;
+    outline: .5px solid grey;
+    /* background-color: aqua; */
+}
