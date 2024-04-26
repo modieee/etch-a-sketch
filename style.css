@@ -6,7 +6,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     flex-direction: column;
 }
 .control {
@@ -15,13 +15,14 @@ body {
 
 .parent-div {
     width: 500px;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* border: 2px solid red; */
+    border-radius: 1%;
 }
-.square-divs {
-    width: 30px;
-    height: 30px;
-    outline: .5px solid grey;
-    /* background-color: aqua; */
+.grid-square {
+    border: .3px solid grey;
+    min-width: 1.9rem;
 }
