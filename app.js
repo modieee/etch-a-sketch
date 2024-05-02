@@ -1,40 +1,67 @@
-const myContainer = document.querySelector('.parent-div');
-const userInput = document.querySelector('#numberInput');
+const board = document.querySelector(".flex-container");
+const boardSize = parseInt(document.getElementById("quantity").value);
+const randomColorBtn = document.querySelector(".random");
+const blackBtn = document.querySelector(".black");
+const eraserBtn = document.querySelector(".eraser");
 
-function createSketch () {
-    for (let i = 0; i < 256; i++) {
+let value = boardSize * boardSize;
+for (let i = 0; i < value; i++) {
+    let newElement = document.createElement("div");
+    newElement.classList.add("grid-item");
+    
+    board.append(newElement);
+};
+
+const resize = (value) => {
+    for (let i = 0; i < value; i++) {
         let newElement = document.createElement("div");
-        newElement.classList.add("grid-square")
-        myContainer.append(newElement);
-    }
+        newElement.classList.add("grid-item");
+        
+        board.append(newElement);
+    };
 }
 
-function updateGrid () {
-    for (let i = 0; i < userInput.value * userInput.value; i++) {
-        let newElement = document.createElement("div");
-        newElement.classList.add("grid-square")
-        myContainer.append(newElement);
-    }
-}
+const gridItem = document.querySelectorAll(".grid-item");
 
-userInput.addEventListener("change", updateGrid)
-createSketch();
+gridItem.forEach(gridItem => {
+    gridItem.addEventListener("mouseenter", () => {
+        gridItem.style.backgroundColor = "black";
+    });
+});
 
-function generateRandomColor() {
+const generateRandomColor = () => {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
-    
+
     return `rgb(${r}, ${g}, ${b})`;
 };
 
-let colorChange = document.querySelectorAll(".grid-square");
+blackBtn.addEventListener("click", () => {
+    gridItem.forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            item.style.backgroundColor = "black";
+        })
+    })
 
-colorChange.forEach((div) => {
-    div.addEventListener('mouseenter', () => {
-        const randomColor = generateRandomColor();
-        console.log(randomColor);
-        div.style.backgroundColor = randomColor;
-    });
-})
+});
+
+randomColorBtn.addEventListener("click", () => {
+    gridItem.forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            let randomColor = generateRandomColor();
+            item.style.backgroundColor = randomColor;
+        })
+    })
+
+});
+
+eraserBtn.addEventListener("click", () => {
+    gridItem.forEach(item => {
+        item.addEventListener("mouseenter", () => {
+            item.style.backgroundColor = "white";
+        })
+    })
+
+});
 
